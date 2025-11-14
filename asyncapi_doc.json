@@ -1,0 +1,403 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Dispenser MQTT API",
+    "version": "1.0.0",
+    "description": "AsyncAPI definition for the storage dispenser module.\nThe dispenser performs actions such as dispense, deliver, pick, rest, and return\nthrough MQTT topics.\n"
+  },
+  "servers": {
+    "mqttBroker": {
+      "host": "192.168.2.50:1883",
+      "protocol": "mqtt",
+      "description": "Wish&Cook IOT development broker."
+    }
+  },
+  "channels": {
+    "storage/dispenser/{id}/action/dispense/in": {
+      "address": "storage/dispenser/{id}/action/dispense/in",
+      "messages": {
+        "dispenseAction.message": {
+          "$ref": "#/components/messages/DispenseRequest"
+        }
+      },
+      "description": "Tell the dispenser to dispense a given weight",
+      "parameters": {
+        "id": {
+          "description": "Dispenser ID"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/dispense/out": {
+      "address": "storage/dispenser/{id}/action/dispense/out",
+      "messages": {
+        "dispenseResponse.message": {
+          "$ref": "#/components/messages/DispenseResponse"
+        }
+      },
+      "description": "Response from dispenser after dispense action",
+      "parameters": {
+        "id": {
+          "description": "Dispenser ID"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/deliver/in": {
+      "address": "storage/dispenser/{id}/action/deliver/in",
+      "messages": {
+        "publish.message": {
+          "$ref": "#/components/messages/DeliverRequest"
+        }
+      },
+      "description": "Tell dispenser to deliver cup",
+      "parameters": {
+        "id": {}
+      }
+    },
+    "storage/dispenser/{id}/action/deliver/out": {
+      "address": "storage/dispenser/{id}/action/deliver/out",
+      "messages": {
+        "subscribe.message": {
+          "$ref": "#/components/messages/DeliverResponse"
+        }
+      },
+      "description": "Response to deliver action",
+      "parameters": {
+        "id": {}
+      }
+    },
+    "storage/dispenser/{id}/action/pick/in": {
+      "address": "storage/dispenser/{id}/action/pick/in",
+      "messages": {
+        "publish.message": {
+          "$ref": "#/components/messages/PickRequest"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/pick/out": {
+      "address": "storage/dispenser/{id}/action/pick/out",
+      "messages": {
+        "subscribe.message": {
+          "$ref": "#/components/messages/PickResponse"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/rest/in": {
+      "address": "storage/dispenser/{id}/action/rest/in",
+      "messages": {
+        "publish.message": {
+          "$ref": "#/components/messages/RestRequest"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/rest/out": {
+      "address": "storage/dispenser/{id}/action/rest/out",
+      "messages": {
+        "subscribe.message": {
+          "$ref": "#/components/messages/RestResponse"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/return/in": {
+      "address": "storage/dispenser/{id}/action/return/in",
+      "messages": {
+        "publish.message": {
+          "$ref": "#/components/messages/ReturnRequest"
+        }
+      }
+    },
+    "storage/dispenser/{id}/action/return/out": {
+      "address": "storage/dispenser/{id}/action/return/out",
+      "messages": {
+        "subscribe.message": {
+          "$ref": "#/components/messages/ReturnResponse"
+        }
+      }
+    }
+  },
+  "operations": {
+    "dispenseAction": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1dispense~1in"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1dispense~1in/messages/dispenseAction.message"
+        }
+      ]
+    },
+    "dispenseResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1dispense~1out"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1dispense~1out/messages/dispenseResponse.message"
+        }
+      ]
+    },
+    "deliverAction": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1deliver~1in"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1deliver~1in/messages/publish.message"
+        }
+      ]
+    },
+    "deliverResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1deliver~1out"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1deliver~1out/messages/subscribe.message"
+        }
+      ]
+    },
+    "pickAction": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1pick~1in"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1pick~1in/messages/publish.message"
+        }
+      ]
+    },
+    "pickResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1pick~1out"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1pick~1out/messages/subscribe.message"
+        }
+      ]
+    },
+    "restAction": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1rest~1in"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1rest~1in/messages/publish.message"
+        }
+      ]
+    },
+    "restResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1rest~1out"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1rest~1out/messages/subscribe.message"
+        }
+      ]
+    },
+    "returnAction": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1return~1in"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1return~1in/messages/publish.message"
+        }
+      ]
+    },
+    "returnResponse": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/storage~1dispenser~1{id}~1action~1return~1out"
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/storage~1dispenser~1{id}~1action~1return~1out/messages/subscribe.message"
+        }
+      ]
+    }
+  },
+  "components": {
+    "messages": {
+      "DispenseRequest": {
+        "name": "DispenseRequest",
+        "payload": {
+          "$ref": "#/components/schemas/DispenseRequest"
+        }
+      },
+      "DispenseResponse": {
+        "name": "DispenseResponse",
+        "payload": {
+          "$ref": "#/components/schemas/DispenseResponse"
+        }
+      },
+      "DeliverRequest": {
+        "payload": {
+          "$ref": "#/components/schemas/DeliverRequest"
+        }
+      },
+      "DeliverResponse": {
+        "payload": {
+          "$ref": "#/components/schemas/DeliverResponse"
+        }
+      },
+      "PickRequest": {
+        "payload": {
+          "$ref": "#/components/schemas/GenericRequest"
+        }
+      },
+      "PickResponse": {
+        "payload": {
+          "$ref": "#/components/schemas/GenericResponse"
+        }
+      },
+      "RestRequest": {
+        "payload": {
+          "$ref": "#/components/schemas/GenericRequest"
+        }
+      },
+      "RestResponse": {
+        "payload": {
+          "$ref": "#/components/schemas/GenericResponse"
+        }
+      },
+      "ReturnRequest": {
+        "payload": {
+          "$ref": "#/components/schemas/ReturnRequest"
+        }
+      },
+      "ReturnResponse": {
+        "payload": {
+          "$ref": "#/components/schemas/GenericResponse"
+        }
+      }
+    },
+    "schemas": {
+      "DispenseRequest": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "weight": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "req_id",
+          "id",
+          "weight"
+        ]
+      },
+      "DispenseResponse": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "success",
+              "failed"
+            ]
+          },
+          "weight": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "req_id",
+          "status"
+        ]
+      },
+      "DeliverRequest": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "req_id",
+          "id"
+        ]
+      },
+      "DeliverResponse": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "req_id",
+          "status"
+        ]
+      },
+      "ReturnRequest": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "req_id",
+          "id"
+        ]
+      },
+      "GenericRequest": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "req_id"
+        ]
+      },
+      "GenericResponse": {
+        "type": "object",
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "success",
+              "failed"
+            ]
+          }
+        },
+        "required": [
+          "req_id",
+          "status"
+        ]
+      }
+    }
+  }
+}
