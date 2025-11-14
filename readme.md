@@ -89,6 +89,10 @@ mqtt_manager = MqttManager("192.168.2.197", workers)
 ```
 
 ### Running the System
+```bash
+uv run main.py
+```
+or if you prefer manual setup
 
 ```bash
 python main.py
@@ -224,10 +228,7 @@ await worker.wait_until(slave=4, addr=0, val_ok=2, tmax=120)
 ### Manual Testing
 
 Use the included test script for basic functionality testing:
-```bash
-uv run test_script.py
-```
-or if you prefer manual setup
+
 
 ```bash
 python test_script.py
