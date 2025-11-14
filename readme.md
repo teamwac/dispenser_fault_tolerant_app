@@ -131,16 +131,32 @@ The system responds to MQTT messages with the following topics and payloads:
   "id": 1
 }
 
+#response: storage/dispenser/{id}/action/deliver/out
+{
+  "req_id": "unique-request-id",
+  "status": "success"
+}
+
 # Pick operation  
 # Topic: storage/dispenser/{id}/action/pick/in
 {
   "req_id": "unique-request-id"
+}
+# Response: storage/dispenser/{id}/action/pick/out
+{
+  "req_id": "unique-request-id",
+  "status": "success"
 }
 
 # Rest operation
 # Topic: storage/dispenser/{id}/action/rest/in
 {
   "req_id": "unique-request-id"
+}
+#response: storage/dispenser/{id}/action/rest/out
+{
+  "req_id": "unique-request-id",
+  "status": "success"
 }
 
 # Return operation
@@ -149,6 +165,12 @@ The system responds to MQTT messages with the following topics and payloads:
   "req_id": "unique-request-id",
   "id": 1
 }
+# Response: storage/dispenser/{id}/action/return/out
+{
+  "req_id": "unique-request-id",
+  "status": "success"
+}
+
 ```
 
 ## 🔧 Development
