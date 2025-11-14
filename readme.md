@@ -355,7 +355,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Authors
 
-- **Team W&C** - *Initial work* - [dispenser_fault_tolerant_app](https://github.com/teamwac/dispenser_fault_tolerant_app)
+- **Tanim - W&C** - *Initial work* - [dispenser_fault_tolerant_app](https://github.com/teamwac/dispenser_fault_tolerant_app)
 
 ## 🙏 Acknowledgments
 
