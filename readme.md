@@ -359,7 +359,6 @@ Not Avaiable
 
 ## 🙏 Acknowledgments
 
-- Wish&Cook IOT development team
 - AsyncAPI community for standardized documentation
 - Python asyncio community for robust async patterns
 - Modbus community for industrial communication standards
