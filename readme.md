@@ -136,6 +136,7 @@ The system responds to MQTT messages with the following topics and payloads:
   "req_id": "unique-request-id",
   "status": "success"
 }
+#-------------------------------
 
 # Pick operation  
 # Topic: storage/dispenser/{id}/action/pick/in
@@ -147,6 +148,7 @@ The system responds to MQTT messages with the following topics and payloads:
   "req_id": "unique-request-id",
   "status": "success"
 }
+#-------------------------------
 
 # Rest operation
 # Topic: storage/dispenser/{id}/action/rest/in
@@ -158,6 +160,7 @@ The system responds to MQTT messages with the following topics and payloads:
   "req_id": "unique-request-id",
   "status": "success"
 }
+#-------------------------------
 
 # Return operation
 # Topic: storage/dispenser/{id}/action/return/in
